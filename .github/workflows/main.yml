@@ -3,7 +3,7 @@ name: Publish Docker Image to GHCR
 on:
   push:
     branches:
-      - main  # Change if needed
+      - main  # Change if needed (change the branch name when needed)
   release:
     types: [created]
 
