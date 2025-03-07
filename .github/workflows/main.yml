@@ -1,0 +1,40 @@
+name: Publish Docker Image to GHCR
+
+on:
+  push:
+    branches:
+      - main  # Change if needed
+  release:
+    types: [created]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u "${{ secrets.GHCR_USERNAME }}" --password-stdin
+
+      - name: Build Docker Image
+        run: |
+          IMAGE_NAME=ghcr.io/${{ secrets.GHCR_USERNAME }}/my-app
+          docker build -t $IMAGE_NAME:latest .
+
+      - name: Push Docker Image to GHCR
+        run: |
+          IMAGE_NAME=ghcr.io/${{ secrets.GHCR_USERNAME }}/my-app
+          docker push $IMAGE_NAME:latest
+
+      - name: Make the image public
+        run: |
+          gh api --method PATCH -H "Accept: application/vnd.github.v3+json" \
+            /user/packages/container/my-app/visibility -f visibility="public"
+        env:
+          GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
