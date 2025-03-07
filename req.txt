@@ -5,7 +5,7 @@ bs4
 certifi
 charset-normalizer
 distro
-Django
+Django==4.2
 idna
 JPype1
 mysql-connector-python
