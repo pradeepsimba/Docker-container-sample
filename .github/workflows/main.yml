@@ -34,7 +34,9 @@ jobs:
 
       - name: Make the image public
         run: |
-          gh api --method PATCH -H "Accept: application/vnd.github.v3+json" \
-            /user/packages/container/my-app/visibility -f visibility="public"
+          gh api --method PATCH \
+            -H "Accept: application/vnd.github.v3+json" \
+            "/users/${{ secrets.GHCR_USERNAME }}/packages/container/my-app" \
+            -f visibility="public"
         env:
           GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
