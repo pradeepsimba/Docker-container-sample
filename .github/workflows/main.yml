@@ -31,12 +31,3 @@ jobs:
         run: |
           IMAGE_NAME=ghcr.io/${{ secrets.GHCR_USERNAME }}/a2-env
           docker push $IMAGE_NAME:latest
-
-      - name: Make the image public
-        run: |
-          gh api --method PATCH \
-            -H "Accept: application/vnd.github.v3+json" \
-            "/users/${{ secrets.GHCR_USERNAME }}/packages/container/a2-env" \
-            -f visibility="public"
-        env:
-          GH_TOKEN: ${{ secrets.GHCR_TOKEN }}
