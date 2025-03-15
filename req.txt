@@ -29,3 +29,13 @@ tzdata
 urllib3
 boto3
 gunicorn
+backports.zoneinfo==0.2.1;python_version<"3.9"
+sqlparse==0.4.4
+djangorestframework
+django-cors-headers
+firebase-admin
+requests
+pytz
+pyOpenSSL
+django-extensions
+Werkzeug
