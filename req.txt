@@ -39,3 +39,4 @@ pytz
 pyOpenSSL
 django-extensions
 Werkzeug
+environ
