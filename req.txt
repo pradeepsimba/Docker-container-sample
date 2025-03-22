@@ -40,3 +40,4 @@ pyOpenSSL
 django-extensions
 Werkzeug
 environ
+python-dotenv
