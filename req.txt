@@ -39,5 +39,5 @@ pytz
 pyOpenSSL
 django-extensions
 Werkzeug
-environ
+django-environ
 python-dotenv
