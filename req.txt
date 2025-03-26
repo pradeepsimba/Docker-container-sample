@@ -41,3 +41,4 @@ django-extensions
 Werkzeug
 django-environ
 python-dotenv
+openpyxl
