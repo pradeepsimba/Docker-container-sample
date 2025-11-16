@@ -85,4 +85,5 @@ RUN /opt/conda/envs/dup/bin/pip install --no-cache-dir \
     tzdata \
     urllib3 \
     uvicorn \
-    Werkzeug
+    Werkzeug \
+    scikit-learn
