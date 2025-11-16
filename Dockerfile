@@ -6,6 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 # ===== System dependencies =====
 RUN apt-get update && apt-get install -y --no-install-recommends \
     wget git build-essential cmake libglib2.0-dev libgl1 \
+    python3-dev libpq-dev libjpeg-dev libpng-dev poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 # ===== Install Miniforge (NO TOS required) =====
@@ -29,13 +30,59 @@ RUN mamba create -y -n dup python=3.10 \
     opencv \
     git
 
-# ===== Install Python packages that are easier via pip (inside the env) =====
-# - CLIP (OpenAI) from github
-# - facenet-pytorch (ArcFace implementation + MTCNN)
-# - small deps for unicode/regex handling
+# ===== Install CLIP + ArcFace + Extra Python Packages =====
 RUN /opt/conda/envs/dup/bin/pip install --no-cache-dir \
     ftfy regex \
     git+https://github.com/openai/CLIP.git \
-    facenet-pytorch
-
-RUN /opt/conda/envs/dup/bin/pip install --no-cache-dir -r req.txt
+    facenet-pytorch \
+    alembic \
+    asgiref \
+    beautifulsoup4 \
+    bcrypt \
+    bitarray \
+    boto3 \
+    bs4 \
+    certifi \
+    charset-normalizer \
+    django-cors-headers \
+    django-environ \
+    django-extensions \
+    djangorestframework \
+    Django \
+    distro \
+    fastapi \
+    firebase-admin \
+    gunicorn \
+    idna \
+    JPype1 \
+    mysql-connector-python \
+    openpyxl \
+    opencv-python \
+    packaging \
+    pandas \
+    pdf2image \
+    pdfplumber \
+    pdfreader \
+    PyPDF2 \
+    protobuf \
+    psycopg2-binary \
+    pycryptodome \
+    pymupdf \
+    pyOpenSSL \
+    python-dateutil \
+    python-dotenv \
+    python-multipart \
+    pytz \
+    reportlab \
+    requests \
+    scikit-image \
+    six \
+    soupsieve \
+    sqlalchemy \
+    sqlparse==0.4.4 \
+    python-dotenv \
+    typing_extensions \
+    tzdata \
+    urllib3 \
+    uvicorn \
+    Werkzeug
